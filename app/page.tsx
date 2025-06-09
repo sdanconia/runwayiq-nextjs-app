@@ -3,8 +3,6 @@ import Image from 'next/image';
 import { ShieldCheck, Rocket, BarChart, Users, Target } from 'lucide-react';
 
 // --- File Paths ---
-const logoPath = '/runwayiq-logo.ico'; 
-const heroImagePath = '/hero-image.png';
 
 // --- Main Page Component ---
 export default function HomePage() {
