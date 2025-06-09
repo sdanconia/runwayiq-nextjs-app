@@ -201,7 +201,7 @@ const Investors = () => (
       </div>
       <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">For Angel Investors & VCs</h2>
       <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-400">
-        De-risk your investments. RunwayIQ partners with early-stage startups to build the replicable, scalable sales motion that proves they're ready for a Series A.
+        De-risk your investments. RunwayIQ partners with early-stage startups to build the replicable, scalable sales motion that proves they are ready for a Series A.
       </p>
       <div className="mt-8">
          <a
