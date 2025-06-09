@@ -27,7 +27,7 @@ const Header = () => (
   <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md">
     <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
       <a href="#home" className="flex items-center gap-2">
-        <Image src={logoPath} alt="RunwayIQ Logo" width={40} height={40} className="rounded-md" />
+        <Image src="/runwayiq-logo.ico" alt="RunwayIQ Logo" width={40} height={40} className="rounded-md" />
         <span className="text-xl font-bold text-white">RunwayIQ</span>
       </a>
       <nav className="hidden items-center gap-6 text-sm md:flex">
