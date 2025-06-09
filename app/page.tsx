@@ -1,11 +1,10 @@
 import Image from 'next/image';
-import { ShieldCheck, Rocket, BarChart, Users, Handshake, Target } from 'lucide-react';
+// 'Handshake' import has been removed as it was unused.
+import { ShieldCheck, Rocket, BarChart, Users, Target } from 'lucide-react';
 
-// You can create a new file for the logo path or keep it here
-// Make sure to add your logo to the `public` folder of your new project.
-// For example: /public/runwayiq-logo.png
-const logoPath = '/runwayiq-logo.jpg'; 
-const heroImagePath = '/hero-image.png'; // UPDATED from .jpg to .png
+// --- File Paths ---
+const logoPath = '/runwayiq-logo.ico'; 
+const heroImagePath = '/hero-image.png';
 
 // --- Main Page Component ---
 export default function HomePage() {
@@ -28,7 +27,7 @@ const Header = () => (
   <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md">
     <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
       <a href="#home" className="flex items-center gap-2">
-        <Image src="/runwayiq-logo.ico" alt="RunwayIQ Logo" width={40} height={40} className="rounded-md" />
+        <Image src={logoPath} alt="RunwayIQ Logo" width={40} height={40} className="rounded-md" />
         <span className="text-xl font-bold text-white">RunwayIQ</span>
       </a>
       <nav className="hidden items-center gap-6 text-sm md:flex">
@@ -74,13 +73,14 @@ const Hero = () => (
             width={800}
             height={800}
             className="relative rounded-2xl shadow-2xl"
-            priority // This helps load the image faster as it's above the fold
+            priority
           />
         </div>
       </div>
     </div>
   </section>
 );
+
 
 // --- Benefit Card Component ---
 const BenefitCard = ({ icon: Icon, title, children }: { icon: React.ElementType, title: string, children: React.ReactNode }) => (
@@ -200,8 +200,9 @@ const Investors = () => (
         <Users className="h-12 w-12" />
       </div>
       <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">For Angel Investors & VCs</h2>
+      {/* The apostrophe in "they're" has been fixed to "they&apos;re" */}
       <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-400">
-        De-risk your investments. RunwayIQ partners with early-stage startups to build the replicable, scalable sales motion that proves they are ready for a Series A.
+        De-risk your investments. RunwayIQ partners with early-stage startups to build the replicable, scalable sales motion that proves they&apos;re ready for a Series A.
       </p>
       <div className="mt-8">
          <a
