@@ -66,7 +66,7 @@ const Hero = () => (
         </div>
         <div className="relative mx-auto w-full max-w-lg lg:mx-0">
            <Image
-            src={heroImagePath}
+            src= "/hero-image.png"
             alt="An illustration showing a person at a desk with AI assistants."
             width={800}
             height={800}
