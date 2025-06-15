@@ -1,231 +1,233 @@
-import Image from 'next/image';
-// 'Handshake' import has been removed as it was unused.
-import { ShieldCheck, Rocket, BarChart, Users, Target } from 'lucide-react';
+import Image from 'next/image'
+import { Play } from 'lucide-react'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { AnimatedCounter } from '@/components/ui/animated-counter'
+import { valuePropositions, podcastEpisodes } from '@/lib/constants'
 
-// --- File Paths ---
-
-// --- Main Page Component ---
 export default function HomePage() {
   return (
-    <div className="bg-slate-900 text-slate-300 font-sans">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main>
-        <Hero />
-        <Benefits />
-        <Pricing />
-        <Investors />
+        <HeroSection />
+        <ValuePropositionsSection />
+        <SocialProofSection />
+        <PodcastTeaserSection />
       </main>
       <Footer />
     </div>
-  );
+  )
 }
 
-// --- Header Component ---
-const Header = () => (
-  <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md">
-    <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-      <a href="#home" className="flex items-center gap-2">
-        <Image src="/runwayiq-logo.ico" alt="RunwayIQ Logo" width={40} height={40} className="rounded-md" />
-        <span className="text-xl font-bold text-white">RunwayIQ</span>
-      </a>
-      <nav className="hidden items-center gap-6 text-sm md:flex">
-        <a href="#benefits" className="transition-colors hover:text-white">Benefits</a>
-        <a href="#pricing" className="transition-colors hover:text-white">Pricing</a>
-        <a href="#investors" className="transition-colors hover:text-white">Investors</a>
-      </nav>
-      <a
-        href="#contact"
-        className="hidden rounded-md bg-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-md transition-transform hover:scale-105 hover:bg-sky-600 md:block"
-      >
-        Book a Demo
-      </a>
-    </div>
-  </header>
-);
+function HeroSection() {
+  return (
+    <section className="relative overflow-hidden py-20 sm:py-32">
+      {/* Background with subtle animation */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 animate-pulse-bg" />
+      
+      {/* Animated SVG blobs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-32 h-80 w-80 rounded-full bg-primary/10 blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-32 h-80 w-80 rounded-full bg-accent/10 blur-3xl animate-pulse" />
+      </div>
 
-// --- Hero Section ---
-const Hero = () => (
-  <section id="home" className="overflow-hidden py-20 sm:py-32 lg:py-32">
-    <div className="container mx-auto max-w-7xl px-4">
-      <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:items-center">
-        <div className="text-center lg:text-left">
-          <h1 className="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl">
-            Find Product-Market Fit Before You Run Out of Runway
-          </h1>
-          <p className="mt-6 text-lg text-slate-400">
-            RunwayIQ validates your GTM motion with AI-powered outreach and real-time human validation. We get you from Seed to Series A, faster.
-          </p>
-          <div className="mt-8 flex justify-center gap-4 lg:justify-start">
-            <a
-              href="#contact"
-              className="transform rounded-md bg-sky-500 px-6 py-3 font-semibold text-white shadow-lg transition-transform hover:scale-105 hover:bg-sky-600"
-            >
-              Book Your Demo
-            </a>
+      <div className="container relative mx-auto max-w-7xl px-4">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:items-center">
+          <div className="text-center lg:text-left animate-fade-in">
+            <h1 className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl font-heading">
+              AI-Powered GTM That Gets You From Seed to Series A
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground">
+              We automate outbound, validate PMF, and accelerate traction for post-seed startups.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+              <Button size="lg" href="mailto:strategy@runwayiq.com">
+                Book Strategy Call
+              </Button>
+              <Button variant="outline" size="lg" href="/case-studies">
+                View Case Studies
+              </Button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-12">
+              <p className="text-sm text-muted-foreground mb-4">Trusted by high-growth startups</p>
+              <div className="flex items-center justify-center gap-8 lg:justify-start opacity-60">
+                <div className="text-lg font-semibold">Transistor</div>
+                <div className="text-lg font-semibold">Reform</div>
+                <div className="text-lg font-semibold">TechScale</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-lg lg:mx-0 animate-slide-in-up">
+            <Image
+              src="/hero-image.png"
+              alt="AI-powered GTM illustration"
+              width={800}
+              height={800}
+              className="relative rounded-2xl shadow-2xl"
+              priority
+            />
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-lg lg:mx-0">
-           <Image
-            src= "/hero-image.png"
-            alt="An illustration showing a person at a desk with AI assistants."
-            width={800}
-            height={800}
-            className="relative rounded-2xl shadow-2xl"
-            priority
-          />
-        </div>
       </div>
-    </div>
-  </section>
-);
-
-
-// --- Benefit Card Component ---
-const BenefitCard = ({ icon: Icon, title, children }: { icon: React.ElementType, title: string, children: React.ReactNode }) => (
-  <div className="rounded-xl bg-slate-800/50 p-6 shadow-lg ring-1 ring-white/10">
-    <div className="flex items-center gap-4">
-      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-500/10">
-        <Icon className="h-6 w-6 text-sky-400" />
-      </div>
-      <h3 className="text-lg font-bold text-white">{title}</h3>
-    </div>
-    <p className="mt-4 text-slate-400">{children}</p>
-  </div>
-);
-
-// --- Benefits Section ---
-const Benefits = () => (
-  <section id="benefits" className="py-20 sm:py-24">
-    <div className="container mx-auto max-w-7xl px-4">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Your AI-Powered GTM Co-Pilot</h2>
-        <p className="mt-4 text-lg text-slate-400">
-          We combine automated efficiency with the critical human insights needed to validate your strategy.
-        </p>
-      </div>
-      <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <BenefitCard icon={Rocket} title="Rapid ICP Validation">
-          Quickly test and iterate on Ideal Customer Profiles to find your most lucrative market segments with real-world feedback.
-        </BenefitCard>
-        <BenefitCard icon={Target} title="Automated Precision Outreach">
-          Leverage AI-driven workflows for calls, emails, and LinkedIn to set meetings with the right prospects, consistently.
-        </BenefitCard>
-        <BenefitCard icon={BarChart} title="Actionable Intelligence">
-          Uncover key competitor data and customer pain points that directly inform your product development roadmap.
-        </BenefitCard>
-      </div>
-    </div>
-  </section>
-);
-
-// --- Pricing Card Component ---
-const PricingCard = ({ plan, price, description, features, popular = false }: { plan: string, price: string, description: string, features: string[], popular?: boolean }) => (
-    <div className={`relative rounded-2xl p-8 shadow-xl ring-1 ${popular ? 'ring-sky-400' : 'ring-slate-700'}`}>
-        {popular && <div className="absolute top-0 -translate-y-1/2 rounded-full bg-sky-500 px-4 py-1 text-sm font-semibold text-white">Most Popular</div>}
-        <h3 className="text-xl font-semibold text-white">{plan}</h3>
-        <p className="mt-2 text-slate-400">{description}</p>
-        <p className="mt-6 text-4xl font-bold text-white">{price} <span className="text-base font-medium text-slate-400">{plan === '3-Month Pilot' ? 'one-time' : '/ month'}</span></p>
-        <ul className="mt-6 space-y-4">
-            {features.map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
-                    <ShieldCheck className="h-5 w-5 flex-shrink-0 text-sky-500" />
-                    <span>{feature}</span>
-                </li>
-            ))}
-        </ul>
-        <a href="#contact" className={`mt-8 block w-full rounded-md px-6 py-3 text-center font-semibold ${popular ? 'bg-sky-500 text-white hover:bg-sky-600' : 'bg-slate-700 text-white hover:bg-slate-600'}`}>
-            Get Started
-        </a>
-    </div>
-);
-
-// --- Pricing Section ---
-const Pricing = () => (
-    <section id="pricing" className="py-20 sm:py-24">
-        <div className="container mx-auto max-w-7xl px-4">
-            <div className="mx-auto max-w-2xl text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Clear Pricing for Rapid Growth</h2>
-                <p className="mt-4 text-lg text-slate-400">
-                    Invest in a validated GTM strategy that pays for itself.
-                </p>
-            </div>
-            <div className="mx-auto mt-16 grid max-w-md grid-cols-1 gap-8 lg:max-w-5xl lg:grid-cols-3">
-                 <PricingCard
-                    plan="3-Month Pilot"
-                    price="$10k"
-                    description="The ultimate GTM validation sprint."
-                    features={[
-                        "Full SDR/AE Sales Cycle",
-                        "Automated Outreach Campaigns",
-                        "Weekly Iteration & Reporting",
-                        "PMF Validation Report"
-                    ]}
-                />
-                <PricingCard
-                    plan="Growth Tier"
-                    price="$5k"
-                    description="Sustained execution post-validation."
-                    features={[
-                        "Continuous GTM Execution",
-                        "Ongoing Lead Generation",
-                        "Monthly Performance Analysis",
-                        "Scalable Sales Playbook"
-                    ]}
-                    popular={true}
-                />
-                 <PricingCard
-                    plan="Partner Tier"
-                    price="$10k"
-                    description="A true extension of your team."
-                    features={[
-                        "All Growth Tier Features",
-                        "Customer Onboarding Support",
-                        "Customer Success Integration",
-                        "Quarterly Strategic Reviews"
-                    ]}
-                />
-            </div>
-        </div>
     </section>
-);
+  )
+}
 
-
-// --- Investors Section ---
-const Investors = () => (
-  <section id="investors" className="py-20 sm:py-24">
-    <div className="container mx-auto max-w-4xl rounded-2xl bg-slate-800/50 p-10 text-center ring-1 ring-white/10">
-      <div className="flex justify-center text-sky-400">
-        <Users className="h-12 w-12" />
-      </div>
-      <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">For Angel Investors & VCs</h2>
-      {/* The apostrophe in "they're" has been fixed to "they&apos;re" */}
-      <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-400">
-        De-risk your investments. RunwayIQ partners with early-stage startups to build the replicable, scalable sales motion that proves they&apos;re ready for a Series A.
-      </p>
-      <div className="mt-8">
-         <a
-          href="#contact"
-          className="transform rounded-md bg-slate-700 px-6 py-3 font-semibold text-white shadow-lg transition-transform hover:scale-105 hover:bg-slate-600"
-        >
-          Explore Partnerships
-        </a>
-      </div>
-    </div>
-  </section>
-);
-
-// --- Footer Section ---
-const Footer = () => (
-    <footer id="contact" className="border-t border-slate-800 py-10">
-        <div className="container mx-auto max-w-7xl px-4 text-center">
-            <h2 className="text-2xl font-bold text-white">Ready to accelerate your growth?</h2>
-            <p className="mt-2 text-slate-400">Book a free, no-obligation demo to see how RunwayIQ can build your pipeline.</p>
-            <a href="mailto:demo@runwayiq.com" className="mt-6 inline-block rounded-md bg-sky-500 px-6 py-3 font-semibold text-white shadow-lg transition-transform hover:scale-105 hover:bg-sky-600">
-                demo@runwayiq.com
-            </a>
-            <div className="mt-8 text-sm text-slate-500">
-                &copy; {new Date().getFullYear()} RunwayIQ. All rights reserved.
-            </div>
+function ValuePropositionsSection() {
+  return (
+    <section className="py-20 sm:py-24">
+      <div className="container mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-2xl text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-heading">
+            The RunwayIQ Advantage
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Combining AI automation with strategic human insights for unprecedented growth
+          </p>
         </div>
-    </footer>
-);
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {valuePropositions.map((prop) => (
+            <Card key={prop.id} className="text-center hover" hover>
+              <CardHeader>
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10">
+                  <prop.IconComponent className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">{prop.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{prop.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function SocialProofSection() {
+  return (
+    <section className="py-20 sm:py-24 bg-muted/30">
+      <div className="container mx-auto max-w-7xl px-4">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
+          {/* Results Column */}
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-heading">
+              Results That Speak Volumes
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Our proven methodology delivers measurable outcomes for early-stage startups ready to scale.
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">
+                  <AnimatedCounter value={120} suffix="%" />
+                </div>
+                <p className="text-sm text-muted-foreground">Average Client Growth (YoY)</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">
+                  <AnimatedCounter value={90} /> Days
+                </div>
+                <p className="text-sm text-muted-foreground">To First Measurable Impact</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">
+                  $<AnimatedCounter value={5} />M+
+                </div>
+                <p className="text-sm text-muted-foreground">In Follow-On Funding Facilitated</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial Column */}
+          <Card className="p-8">
+            <div className="flex items-start gap-4">
+              <Image
+                src="/hero-image.png"
+                alt="Justin Jackson"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
+              <div>
+                <blockquote className="text-lg">
+                  &quot;RunwayIQ transformed our GTM strategy from guesswork to a predictable growth engine. Their AI-powered approach helped us identify our true ICP and scale systematically.&quot;
+                </blockquote>
+                <div className="mt-4">
+                  <div className="font-semibold">Justin Jackson</div>
+                  <div className="text-sm text-muted-foreground">Co-founder, Transistor</div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function PodcastTeaserSection() {
+  return (
+    <section className="py-20 sm:py-24">
+      <div className="container mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-2xl text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-heading">
+            PMF Podcast: Industry Intelligence That Powers Our AI
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Exclusive conversations with founders, investors, and GTM experts that inform our AI models and strategic insights.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {podcastEpisodes.map((episode) => (
+            <Card key={episode.id} className="overflow-hidden hover" hover>
+              <div className="aspect-video bg-muted">
+                <Image
+                  src={episode.imageUrl}
+                  alt={episode.title}
+                  width={400}
+                  height={225}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <CardHeader>
+                <CardTitle className="text-lg line-clamp-2">{episode.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                  {episode.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">{episode.duration}</span>
+                  <Button size="sm" variant="ghost">
+                    <Play className="h-4 w-4 mr-1" />
+                    Listen Now
+                  </Button>
+                </div>
+                {episode.guest && (
+                  <p className="text-sm font-medium mt-2">with {episode.guest}</p>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button variant="outline" size="lg" href="/podcast">
+            Explore All Episodes
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
