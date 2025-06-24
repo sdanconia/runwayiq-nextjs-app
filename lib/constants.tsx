@@ -10,7 +10,7 @@ export const navLinks: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "PMF Podcast", href: "/podcast" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "CRM", href: "/crm" },
+  { label: "Sales Dashboard", href: "/sales-dashboard" },
   { label: "Investor Portal", href: "/investors" },
   { label: "About Us", href: "/about" },
 ]
