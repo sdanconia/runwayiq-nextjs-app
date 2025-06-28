@@ -139,7 +139,7 @@ export default function BookDemoPage() {
               </div>
 
               <Button 
-                onClick={() => handleBookDemo('https://calendly.com/runwayiq/15min-demo')}
+                onClick={() => handleBookDemo('https://cal.com/sebastiandanconia/15min')}
                 disabled={isBooking}
                 className="w-full"
               >
@@ -193,7 +193,7 @@ export default function BookDemoPage() {
               </div>
 
               <Button 
-                onClick={() => handleBookDemo('https://calendly.com/runwayiq/30min-strategy')}
+                onClick={() => handleBookDemo('https://cal.com/sebastiandanconia/30min')}
                 disabled={isBooking}
                 className="w-full"
               >

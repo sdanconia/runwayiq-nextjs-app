@@ -3,7 +3,7 @@
 import { useState, Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Star, User, Target, Trophy, CheckCircle, BarChart3, Calendar, Users } from 'lucide-react'
+import { Star, User, Target, Trophy, CheckCircle, BarChart3, Calendar, Users, Phone } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Header } from '@/components/header'
 import { Button } from '@/components/ui/button'
@@ -23,14 +23,16 @@ import FulfillmentTab from './tabs/FulfillmentTab'
 import CustomerSuccessTab from './tabs/CustomerSuccessTab'
 import LeadsTab from './tabs/LeadsTab'
 import CampaignsTab from './tabs/CampaignsTab'
+import ColdCallingTab from './tabs/ColdCallingTab'
 import MobileNavigation from './MobileNavigation'
 
-type TabType = 'overview' | 'focus' | 'leads' | 'campaigns' | 'goals' | 'team' | 'analytics' | 'fulfillment' | 'customer-success'
+type TabType = 'overview' | 'focus' | 'leads' | 'campaigns' | 'cold-calling' | 'goals' | 'team' | 'analytics' | 'fulfillment' | 'customer-success'
 
 const tabs = [
   { id: 'overview' as TabType, label: 'Overview', icon: Target },
   { id: 'focus' as TabType, label: 'Today\'s Focus', icon: CheckCircle },
   { id: 'campaigns' as TabType, label: 'Campaigns', icon: Target },
+  { id: 'cold-calling' as TabType, label: 'AI Cold Calling', icon: Phone },
   { id: 'leads' as TabType, label: 'Leads', icon: Users },
   { id: 'analytics' as TabType, label: 'Analytics', icon: BarChart3 },
   { id: 'goals' as TabType, label: 'Goals', icon: Trophy },
@@ -65,6 +67,8 @@ export default function SalesDashboard() {
           return <LeadsTab />
         case 'campaigns':
           return <CampaignsTab />
+        case 'cold-calling':
+          return <ColdCallingTab />
         case 'analytics':
           return <AnalyticsTab />
         case 'goals':
